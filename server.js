@@ -31,7 +31,8 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsScraper";
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 // Routes
@@ -42,7 +43,7 @@ app.get("/", function(req, res) {
 
 
 app.get("/saved", function(req, res) {
-    res.sendFile(path.join(__dirname, "public/savedArticles.html"));
+    res.sendFile(path.join(__dirname, "public/saved.html"));
 });
 
 // A GET route 
